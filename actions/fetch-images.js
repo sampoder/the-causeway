@@ -22,6 +22,7 @@ daylist.map((v) => {
   hours.map((selectedHour) => {
     try {
     async function fetchData() {
+      try {
       let cameras = (
         await fetch(
           `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${v
@@ -55,7 +56,10 @@ daylist.map((v) => {
         .catch((error) => {
           console.log(error); // Logs an error if there was one
         });
-    
+      }
+    catch(e){
+      console.log(e)
+    }
     }
     fetchData();
     }
