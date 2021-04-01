@@ -1,0 +1,22 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "dateformat": "^4.5.1",
+    "image-to-base64": "^2.1.1",
+    "lodash": "^4.17.21",
+    "next": "10.1.2",
+    "node-fetch": "^2.6.1",
+    "rc-slider": "^9.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "theme-ui": "^0.6.1",
+    "theme-ui-preset-geist": "^0.0.2"
+  }
+}
