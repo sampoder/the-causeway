@@ -66,10 +66,7 @@ export default function Home() {
       `T${selectedHour[4] ? selectedHour : `0${selectedHour}`}`
     );
 
-  
-
   let formattedPastDate = formattedDate
-    .substring(0, 10)
     .replace("2020", "2019")
     .replace(
       "2021",
@@ -95,7 +92,7 @@ export default function Home() {
             objectFit: "cover",
             objectPosition: "90% 100%",
           }}
-          src="https://images.data.gov.sg/api/traffic-images/2020/02/8d6efef2-c78a-4396-b0c9-aa4fb93635be.jpg"
+          src={`/api/image?time=${formattedPastDate}`}
         />
         <Image
           bg="primary"
@@ -105,7 +102,7 @@ export default function Home() {
             objectFit: "cover",
             objectPosition: "90% 100%",
           }}
-          src="https://images.data.gov.sg/api/traffic-images/2020/06/261a7617-df5e-43ac-b14e-c11d534fcbf1.jpg"
+          src={`/api/image?time=${formattedDate}`}
         />
       </Grid>
       <Grid
@@ -157,7 +154,9 @@ export default function Home() {
         sx={{
           width: "100vw",
           height: "80vh",
-          paddingTop: open ? "calc(50vh - 72px)" : "calc(80vh - 72px)",
+          paddingTop: open
+            ? ["calc(50vh - 122px)", "calc(50vh - 72px)", "calc(50vh - 72px)"]
+            : ["calc(80vh - 122px)", "calc(80vh - 72px)", "calc(80vh - 72px)"],
           userSelect: "none",
           px: ["0vw", "15vw", "22vw"],
           zIndex: "999",
@@ -183,7 +182,7 @@ export default function Home() {
           <Box
             sx={{
               display: open ? "block" : "none",
-              height: "30vh",
+              height: ["30vh", "30vh", "30vh"],
               userSelect: "text",
             }}
           >
@@ -193,8 +192,8 @@ export default function Home() {
             gap={4}
             columns={[
               [3, "2fr 1fr 1fr"],
-              [3, "4fr 1fr 0.2fr"],
-              [3, "4fr 1fr 0.2fr"],
+              [3, "4fr 1fr 0.1fr"],
+              [3, "4fr 1fr 0.1fr"],
             ]}
             sx={{
               zIndex: "999",
@@ -213,7 +212,11 @@ export default function Home() {
               defaultValue="22:00"
               value={selectedHour}
               onChange={handleSelectHourChange}
-              sx={{ width: "100%!important", transform: "translateY(-10px) " }}
+              sx={{
+                width: ["70%!important", "100%!important", "100%!important"],
+                transform: "translateY(-10px) ",
+                textAlign: 'center'
+              }}
             >
               {Array.from({ length: 24 }, (_, i) => i).map((sweetItem) => {
                 return <option key={sweetItem}>{sweetItem}:00</option>;
@@ -224,14 +227,16 @@ export default function Home() {
               sx={{
                 textAlign: "right",
                 fontSize: "5em",
-                transform: open
-                  ? "translateY(-40px) translateX(8px) rotate(180deg)"
-                  : "translateY(-55px)",
+                transform:[
+                      "translateY(-125px)",
+                      "translateY(-55px) translateX(-10px)",
+                      "translateY(-55px) translateX(-10px)",
+                    ],
                 cursor: "pointer",
                 ":hover,:focus": { color: "success" },
               }}
             >
-              ▴
+              {open ?"▾":"▴"}
             </Box>
           </Grid>
         </Card>
