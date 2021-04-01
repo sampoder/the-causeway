@@ -20,6 +20,7 @@ daylist.map((v) => v.toISOString().slice(0, 10)).join("");
 
 daylist.map((v) => {
   hours.map((selectedHour) => {
+    try {
     async function fetchData() {
       let cameras = (
         await fetch(
@@ -54,9 +55,12 @@ daylist.map((v) => {
         .catch((error) => {
           console.log(error); // Logs an error if there was one
         });
+    
     }
     fetchData();
-
-    
+    }
+    catch(e){
+      console.log(e)
+    }
   });
 });
