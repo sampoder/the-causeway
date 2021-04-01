@@ -18,7 +18,7 @@ let final = {};
 
 daylist.map((v) => v.toISOString().slice(0, 10)).join("");
 
-daylist.map((v) => {
+daylist.slice(0,1).map((v) => {
   hours.map((selectedHour) => {
     try {
     async function fetchData() {
