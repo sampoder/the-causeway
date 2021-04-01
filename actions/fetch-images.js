@@ -18,9 +18,11 @@ let final = {};
 
 daylist.map((v) => v.toISOString().slice(0, 10)).join("");
 
-daylist.map((v) => {
+daylist.slice(0,1).map((v) => {
   hours.map((selectedHour) => {
+    try {
     async function fetchData() {
+      try {
       let cameras = (
         await fetch(
           `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${v
@@ -54,9 +56,15 @@ daylist.map((v) => {
         .catch((error) => {
           console.log(error); // Logs an error if there was one
         });
+      }
+    catch(e){
+      console.log(e)
+    }
     }
     fetchData();
-
-    
+    }
+    catch(e){
+      console.log(e)
+    }
   });
 });
