@@ -6,7 +6,6 @@ export default async (req, res) => {
   let failed = true;
 
   while (failed == true) {
-    console.log("this ran");
     failed = false
     cameras = await fetch(
       `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${req.query.time.substring(
