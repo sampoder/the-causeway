@@ -167,9 +167,9 @@ export default function Home() {
             sx={{
               borderColor: ["background", "gray.2", "gray.2"],
               px: ["12px", "48px", "48px"],
-              color: "white",
+              color: "text",
               ":hover,:focus": {
-                color: "white",
+                color: "text",
                 bg: "background",
                 borderColor: ["background", "gray.2", "gray.2"],
               },
@@ -192,12 +192,12 @@ export default function Home() {
             as="div"
             disabled
             sx={{
-              color: "white",
+              color: "text",
               maxWidth: "50%",
               px: ["12px", "48px", "48px"],
               borderColor: ["background", "gray.2", "gray.2"],
               ":hover,:focus": {
-                color: "white",
+                color: "text",
                 bg: "background",
                 borderColor: ["background", "gray.2", "gray.2"],
               },
@@ -294,6 +294,7 @@ export default function Home() {
                     "translateY(-10px)",
                   ],
                   textAlign: "center",
+                  color: "text"
                 }}
               >
                 {Array.from({ length: 24 }, (_, i) => i).map((sweetItem) => {
@@ -307,6 +308,7 @@ export default function Home() {
                   fontSize: "5em",
                   zIndex: "999",
                   maxWidth: "55px",
+                  color: "text"
                   marginTop: [
                     "-55px!important",
                     "0px!important",
