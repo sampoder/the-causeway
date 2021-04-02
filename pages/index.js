@@ -308,7 +308,7 @@ export default function Home() {
                   fontSize: "5em",
                   zIndex: "999",
                   maxWidth: "55px",
-                  color: "text"
+                  color: "text",
                   marginTop: [
                     "-55px!important",
                     "0px!important",
