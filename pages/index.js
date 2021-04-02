@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { Grid, Box, Image, Button, Card, Select } from "theme-ui";
+import { Grid, Box, Image, Button, Card, Select, Text } from "theme-ui";
+import TextCopy from "../text/main.mdx";
 import Slider from "rc-slider";
 import { useState } from "react";
 var dateFormat = require("dateformat");
@@ -40,7 +41,7 @@ export default function Home() {
 
   const [date, setDate] = useState(100);
 
-  const [selectedHour, setSelectedHour] = useState("22:00");
+  const [selectedHour, setSelectedHour] = useState("6:00");
 
   function handleSelectHourChange(event) {
     setSelectedHour(event.target.value);
@@ -79,15 +80,33 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>The Death of the Causeway</title>
+        <meta property="og:title" content={"The Death of the Causeway"} />
+        <meta name="twitter:title" content={"The Death of the Causeway"} />
+        <meta name="og:url" content={"causeway.sampoder.com"} />
+        <meta property="og:type" content="website" />
+        <meta name="description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"} />
+        <meta property="og:description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"}/>
+        <meta name="twitter:description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"} />
+        <meta property="og:image" content={"https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={"https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"} />
+      </Head>
+
       <Grid
         gap={0}
-        columns={[2, "2fr 2fr"]}
-        sx={{ position: "absolute", width: "100vw", height: "100vh" }}
+        columns={[1, 2, "2fr 2fr"]}
+        sx={{
+          position: "absolute",
+          width: "100vw",
+          height: ["85vh", "100vh", "100vh"],
+        }}
       >
         <Image
           bg="primary"
           sx={{
-            height: "100vh",
+            height: ["42.5vh", "100vh", "100vh"],
             width: "100%",
             objectFit: "cover",
             objectPosition: "90% 100%",
@@ -97,7 +116,7 @@ export default function Home() {
         <Image
           bg="primary"
           sx={{
-            height: "100vh",
+            height: ["42.5vh", "100vh", "100vh"],
             width: "100%",
             objectFit: "cover",
             objectPosition: "90% 100%",
@@ -107,7 +126,7 @@ export default function Home() {
       </Grid>
       <Grid
         gap={0}
-        columns={[2, "2fr 2fr"]}
+        columns={[1, 2, 2]}
         sx={{
           width: "100vw",
           height: "20vh",
@@ -120,27 +139,41 @@ export default function Home() {
             as="div"
             disabled
             sx={{
+              borderColor: ["background", "gray.2", "gray.2"],
+              px: ["12px", "48px", "48px"],
               color: "white",
               ":hover,:focus": {
                 color: "white",
                 bg: "background",
-                borderColor: "gray.2",
+                borderColor: ["background", "gray.2", "gray.2"],
               },
             }}
           >
-            {dateFormat(formattedPastDate.substring(0, 10), "longDate")}
+            {dateFormat(formattedPastDate.substring(0, 10), "longDate")}{" "}
+            <Text sx={{ display: ["inline", "none", "none"] }}>
+              vs. {dateFormat(formattedDate.substring(0, 10), "longDate")}
+            </Text>
           </Button>
         </Box>
-        <Box sx={{ zIndex: "999", textAlign: "center" }}>
+        <Box
+          sx={{
+            zIndex: "999",
+            textAlign: "center",
+            display: ["none", "block", "block"],
+          }}
+        >
           <Button
             as="div"
             disabled
             sx={{
               color: "white",
+              maxWidth: "50%",
+              px: ["12px", "48px", "48px"],
+              borderColor: ["background", "gray.2", "gray.2"],
               ":hover,:focus": {
                 color: "white",
                 bg: "background",
-                borderColor: "gray.2",
+                borderColor: ["background", "gray.2", "gray.2"],
               },
             }}
           >
@@ -155,8 +188,8 @@ export default function Home() {
           width: "100vw",
           height: "80vh",
           paddingTop: open
-            ? ["calc(50vh - 122px)", "calc(50vh - 72px)", "calc(50vh - 72px)"]
-            : ["calc(80vh - 122px)", "calc(80vh - 72px)", "calc(80vh - 72px)"],
+            ? ["calc(50vh - 132px)", "calc(50vh - 72px)", "calc(50vh - 72px)"]
+            : ["calc(80vh - 132px)", "calc(80vh - 72px)", "calc(80vh - 72px)"],
           userSelect: "none",
           px: ["0vw", "15vw", "22vw"],
           zIndex: "999",
@@ -183,17 +216,24 @@ export default function Home() {
             sx={{
               display: open ? "block" : "none",
               height: ["30vh", "30vh", "30vh"],
+              maxHeight: [
+                "calc(30vh - 32px)",
+                "calc(30vh - 32px)",
+                "calc(30vh - 32px)",
+              ],
+              overflow: "scroll",
+              marginBottom: "32px",
               userSelect: "text",
             }}
           >
-            Hello!!! {formattedDate}
+            <TextCopy />
           </Box>
           <Grid
             gap={4}
             columns={[
-              [3, "2fr 1fr 1fr"],
-              [3, "4fr 1fr 0.1fr"],
-              [3, "4fr 1fr 0.1fr"],
+              [1, "2fr 1fr 1fr"],
+              [2, "4fr 1.1fr"],
+              [2, "4fr 1.1fr"],
             ]}
             sx={{
               zIndex: "999",
@@ -208,39 +248,68 @@ export default function Home() {
                 setDate(e);
               }}
             />
-            <Select
-              defaultValue="22:00"
-              value={selectedHour}
-              onChange={handleSelectHourChange}
+            <Grid
+              gap={4}
+              columns={["1.4fr 0.1fr", "1.4fr 0.1fr", "1.4fr 0.1fr"]}
               sx={{
-                width: ["70%!important", "100%!important", "100%!important"],
-                transform: "translateY(-10px) ",
-                textAlign: 'center'
+                zIndex: "999",
+                paddingTop: ["10px", "0px", "0px"],
               }}
             >
-              {Array.from({ length: 24 }, (_, i) => i).map((sweetItem) => {
-                return <option key={sweetItem}>{sweetItem}:00</option>;
-              })}
-            </Select>
-            <Box
-              onClick={() => (open ? setOpen(false) : setOpen(true))}
-              sx={{
-                textAlign: "right",
-                fontSize: "5em",
-                transform:[
-                      "translateY(-125px)",
-                      "translateY(-55px) translateX(-10px)",
-                      "translateY(-55px) translateX(-10px)",
-                    ],
-                cursor: "pointer",
-                ":hover,:focus": { color: "success" },
-              }}
-            >
-              {open ?"▾":"▴"}
-            </Box>
+              <Select
+                arrow={<span></span>}
+                defaultValue="6:00"
+                value={selectedHour}
+                onChange={handleSelectHourChange}
+                sx={{
+                  width: ["100%!important", "100%!important", "100%!important"],
+                  transform: [
+                    "translateY(-10px) translateX(-10px)",
+                    "translateY(-10px)",
+                    "translateY(-10px)",
+                  ],
+                  textAlign: "center",
+                }}
+              >
+                {Array.from({ length: 24 }, (_, i) => i).map((sweetItem) => {
+                  return <option key={sweetItem}>{sweetItem}:00</option>;
+                })}
+              </Select>
+              <Box
+                onClick={() => (open ? setOpen(false) : setOpen(true))}
+                sx={{
+                  textAlign: "right",
+                  fontSize: "5em",
+                  zIndex: "999",
+                  maxWidth: "55px",
+                  marginTop: [
+                    "-55px!important",
+                    "0px!important",
+                    "0px!important",
+                  ],
+                  transform: [
+                    "translateY(0px)",
+                    "translateY(-55px) translateX(-10px)",
+                    "translateY(-55px) translateX(-10px)",
+                  ],
+                  cursor: "pointer",
+                  ":hover,:focus": { color: "success" },
+                }}
+              >
+                {open ? "▾" : "▴"}
+              </Box>
+            </Grid>
           </Grid>
         </Card>
       </Grid>
+      <style>
+        {`
+        p {
+          margin-block-start: 0em!important;
+          margin-block-end: 0em!important;
+        }
+        `}
+      </style>
     </>
   );
 }

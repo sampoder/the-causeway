@@ -7,7 +7,6 @@ export default async (req, res) => {
       `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${req.query.time.substring(0, 19)}`
     ).then((r) => r.json())
   ).items[0].cameras;
-  console.log(cameras)
   let targetCamera = filter(
     cameras,
     (camera) => camera["camera_id"] === "2701"
