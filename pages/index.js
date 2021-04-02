@@ -65,6 +65,9 @@ export default function Home() {
     .replace(
       "T00:00",
       `T${selectedHour[4] ? selectedHour : `0${selectedHour}`}`
+    ).replace(
+      "T08:00",
+      `T${selectedHour[4] ? selectedHour : `0${selectedHour}`}`
     );
 
   let formattedPastDate = formattedDate
@@ -76,8 +79,6 @@ export default function Home() {
         : "2020"
     );
 
-  console.log(formattedPastDate);
-
   return (
     <>
       <Head>
@@ -86,12 +87,37 @@ export default function Home() {
         <meta name="twitter:title" content={"The Death of the Causeway"} />
         <meta name="og:url" content={"causeway.sampoder.com"} />
         <meta property="og:type" content="website" />
-        <meta name="description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"} />
-        <meta property="og:description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"}/>
-        <meta name="twitter:description" content={"🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"} />
-        <meta property="og:image" content={"https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"} />
+        <meta
+          name="description"
+          content={
+            "🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"
+          }
+        />
+        <meta
+          property="og:description"
+          content={
+            "🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"
+          }
+        />
+        <meta
+          name="twitter:description"
+          content={
+            "🇲🇾🇸🇬 A tribute to the shutting down of the Causeway in 2020/21"
+          }
+        />
+        <meta
+          property="og:image"
+          content={
+            "https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"
+          }
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={"https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://cloud-c8ngq67aq-hack-club-bot.vercel.app/0causeway_og_image.png"
+          }
+        />
       </Head>
 
       <Grid
@@ -258,7 +284,6 @@ export default function Home() {
             >
               <Select
                 arrow={<span></span>}
-                defaultValue="6:00"
                 value={selectedHour}
                 onChange={handleSelectHourChange}
                 sx={{
